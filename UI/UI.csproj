@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{84CDF58B-0F39-4C86-BB87-B35C591231B9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UI</RootNamespace>
+    <AssemblyName>UI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Events\EventAggregator.cs" />
+    <Compile Include="Events\GroupSelectedEventArgs.cs" />
+    <Compile Include="Events\IApplicationEvent.cs" />
+    <Compile Include="Events\IEventAggregator.cs" />
+    <Compile Include="Events\Messages\AlertMessages\AlertMessage.cs" />
+    <Compile Include="Events\Messages\ProductMessages\ProductUpdatedMessage.cs" />
+    <Compile Include="Events\Messages\ReceiptViewMessages\AddRecordToReceiptMessage.cs" />
+    <Compile Include="Events\Messages\ReceiptViewMessages\ClearReceiptMessage.cs" />
+    <Compile Include="Events\Messages\ReceiptsViewMessages\ClearReceiptsMessage.cs" />
+    <Compile Include="Events\Messages\ReceiptsViewMessages\FindReceiptsInPeriodMessage.cs" />
+    <Compile Include="Events\Messages\ProductMessages\NewProductCreatedMessage.cs" />
+    <Compile Include="Events\Messages\ReceiptViewMessages\PublishReceiptMessage.cs" />
+    <Compile Include="Events\Messages\ReceiptViewMessages\ReceiptPriceUpdatedMessage.cs" />
+    <Compile Include="Events\Messages\ShowViewMessages\ProductUpdatedMessage.cs" />
+    <Compile Include="Events\Messages\ShowViewMessages\ShowAddNewProductViewMessage.cs" />
+    <Compile Include="Events\Messages\ShowViewMessages\ShowAddProductToReciptView.cs" />
+    <Compile Include="Events\Messages\ShowViewMessages\ShowGroupsViewMessage.cs" />
+    <Compile Include="Events\Messages\ShowViewMessages\ShowProductsViewMessage.cs" />
+    <Compile Include="Events\Messages\ShowViewMessages\ShowReceiptsViewMessage.cs" />
+    <Compile Include="Events\Messages\ReceiptViewMessages\UpdateReceiptRecordQuantityMessage.cs" />
+    <Compile Include="Events\ProductSelectedEventArgs.cs" />
+    <Compile Include="Events\RecordSelectedEventArgs.cs" />
+    <Compile Include="GlobalValues.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\TableColumnInfo.cs" />
+    <Compile Include="Models\ReceiptRecordModel.cs" />
+    <Compile Include="Presenters\Data\ReceiptsTablePresenter.cs" />
+    <Compile Include="Presenters\Data\ReceiptTablePresenter.cs" />
+    <Compile Include="Presenters\Data\TablePresenter.cs" />
+    <Compile Include="Presenters\Group\GroupsPresenter.cs" />
+    <Compile Include="Presenters\MainPresenter.cs" />
+    <Compile Include="Presenters\Product\AddNewProductPresenter.cs" />
+    <Compile Include="Presenters\Product\AddProductToReceiptPresenter.cs" />
+    <Compile Include="Presenters\Product\ProductsPresenter.cs" />
+    <Compile Include="Presenters\Product\UpdateProductPresenter.cs" />
+    <Compile Include="Presenters\Receipt\ReceiptPresenter.cs" />
+    <Compile Include="Presenters\Receipt\ReceiptsPresenter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\NumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCHeading.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCHeading.Designer.cs">
+      <DependentUpon>UCHeading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCGroup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCProduct.Designer.cs">
+      <DependentUpon>UCProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCRow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Data\ITableView.cs" />
+    <Compile Include="Views\Data\TableView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Data\TableView.Designer.cs">
+      <DependentUpon>TableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Group\GroupsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Group\GroupsView.Designer.cs">
+      <DependentUpon>GroupsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Group\IGroupsView.cs" />
+    <Compile Include="Views\ILoad.cs" />
+    <Compile Include="Views\IMainView.cs" />
+    <Compile Include="Views\IPresenter.cs" />
+    <Compile Include="Views\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\AddNewProductView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Product\AddNewProductView.Designer.cs">
+      <DependentUpon>AddNewProductView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\AddProductToReceiptView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Product\AddProductToReceiptView.Designer.cs">
+      <DependentUpon>AddProductToReceiptView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\IAddNewProductView.cs" />
+    <Compile Include="Views\Product\IAddProductToReceiptView.cs" />
+    <Compile Include="Views\Product\IProductsView.cs" />
+    <Compile Include="Views\Product\ProductsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Product\ProductsView.Designer.cs">
+      <DependentUpon>ProductsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\UpdateProductView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Product\UpdateProductView.Designer.cs">
+      <DependentUpon>UpdateProductView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Receipt\IReceiptsView.cs" />
+    <Compile Include="Views\Receipt\IReceiptView.cs" />
+    <Compile Include="Views\Receipt\ReceiptsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Receipt\ReceiptsView.Designer.cs">
+      <DependentUpon>ReceiptsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Receipt\ReceiptView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Receipt\ReceiptView.Designer.cs">
+      <DependentUpon>ReceiptView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UserControls\UCHeading.resx">
+      <DependentUpon>UCHeading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCProduct.resx">
+      <DependentUpon>UCProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Data\TableView.resx">
+      <DependentUpon>TableView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Group\GroupsView.resx">
+      <DependentUpon>GroupsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Product\AddNewProductView.resx">
+      <DependentUpon>AddNewProductView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Product\AddProductToReceiptView.resx">
+      <DependentUpon>AddProductToReceiptView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Product\ProductsView.resx">
+      <DependentUpon>ProductsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Product\UpdateProductView.resx">
+      <DependentUpon>UpdateProductView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Receipt\ReceiptsView.resx">
+      <DependentUpon>ReceiptsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Receipt\ReceiptView.resx">
+      <DependentUpon>ReceiptView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StoreLibrary\StoreLibrary.csproj">
+      <Project>{56af9783-3553-48e9-a5fc-8801e9fe392d}</Project>
+      <Name>StoreLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
