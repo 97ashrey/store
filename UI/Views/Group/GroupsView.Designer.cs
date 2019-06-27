@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panelMain = new System.Windows.Forms.Panel();
-            this.ucHeading1 = new UI.UserControls.UCHeading();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ucHeading1 = new UI.UserControls.UCHeading();
             this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,17 +46,6 @@
             this.panelMain.Size = new System.Drawing.Size(367, 248);
             this.panelMain.TabIndex = 1;
             // 
-            // ucHeading1
-            // 
-            this.ucHeading1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ucHeading1.HeadingText = "Heading";
-            this.ucHeading1.Location = new System.Drawing.Point(0, 0);
-            this.ucHeading1.MaximumSize = new System.Drawing.Size(0, 60);
-            this.ucHeading1.MinimumSize = new System.Drawing.Size(0, 60);
-            this.ucHeading1.Name = "ucHeading1";
-            this.ucHeading1.Size = new System.Drawing.Size(367, 60);
-            this.ucHeading1.TabIndex = 2;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -69,6 +58,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(357, 70);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // ucHeading1
+            // 
+            this.ucHeading1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucHeading1.HeadingText = "Grupe";
+            this.ucHeading1.Location = new System.Drawing.Point(0, 0);
+            this.ucHeading1.MaximumSize = new System.Drawing.Size(0, 60);
+            this.ucHeading1.MinimumSize = new System.Drawing.Size(0, 60);
+            this.ucHeading1.Name = "ucHeading1";
+            this.ucHeading1.Size = new System.Drawing.Size(367, 60);
+            this.ucHeading1.TabIndex = 2;
             // 
             // GroupsView
             // 

@@ -21,6 +21,8 @@ namespace UI.Views.Product
 
         public object Presenter { private get; set; }
 
+        public string Heading { get => ucHeading1.HeadingText; set => ucHeading1.HeadingText = value; }
+
         public event EventHandler AddNewProductTriggered;
         public event EventHandler<ProductSelectedEventArgs> ProductSelected;
         public event EventHandler Loaded;
@@ -84,6 +86,23 @@ namespace UI.Views.Product
             Loaded?.Invoke(this, new EventArgs());
         }
 
+        public bool ConfirmDelete(string name, string price, string discount)
+        {
+            string text = $"Želite da obrišete proizvod \n" +
+                          $"Naziv: {name}\n" +
+                          $"Cena: {price}\n" +
+                          $"Popust: {discount}";
+            DialogResult result = MessageBox.Show
+                (
+                    text,
+                    "Upozorenje",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+            return result == DialogResult.Yes ? true : false;
+        }
+
         // Event handlers
 
         private void ProductSelectedHandler(object sender, EventArgs e)
@@ -120,5 +139,7 @@ namespace UI.Views.Product
         {
             AddNewProductTriggered?.Invoke(this, e);
         }
+
+    
     }
 }

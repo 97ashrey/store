@@ -93,10 +93,7 @@ namespace StoreLibrary.DataAccess
                 command.CommandText = 
                     $"SELECT * " +
                     $"FROM [Product] " +
-                    $"WHERE ID in " +
-                    $"(SELECT Product_ID " +
-                    $"FROM [PRODUCT_GROUP] " +
-                    $"WHERE Group_ID = @groupID)";
+                    $"WHERE Group_ID = @groupID";
                 command.Parameters.AddWithValue("groupID", groupID);
                 OleDbDataReader reader = command.ExecuteReader();
 
@@ -126,54 +123,33 @@ namespace StoreLibrary.DataAccess
 
         public ProductModel CreateProduct(ProductModel product, int groupID)
         {
-            OleDbTransaction transaction = null;
             try
             {
                 OpenConnection();
-                transaction = connection.BeginTransaction(IsolationLevel.ReadCommitted);
+                //transaction = connection.BeginTransaction(IsolationLevel.ReadCommitted);
                 OleDbCommand command = connection.CreateCommand();
-                command.Transaction = transaction;
+                //command.Transaction = transaction;
 
                 command.CommandText =
-                    $"INSERT INTO PRODUCT(Product_name,Price,Discount) " +
-                    $"VALUES (@name,@price,@discount)";
+                    $"INSERT INTO PRODUCT(Product_name,Price,Discount,Group_ID) " +
+                    $"VALUES (@name,@price,@discount,@groupID)";
                 command.Parameters.AddWithValue("name", product.Name);
                 command.Parameters.AddWithValue("price", product.Price);
                 command.Parameters.AddWithValue("discount", product.Discount);
+                command.Parameters.AddWithValue("groupID", groupID);
                 
                 int result = command.ExecuteNonQuery();
-                if (result > 0)
+                if(result < 0)
                 {
-                    command.CommandText = 
-                        $"SELECT @@IDENTITY AS ID";
-                    int productID = int.Parse(command.ExecuteScalar().ToString());
-
-                    command.CommandText =
-                        $"INSERT INTO PRODUCT_GROUP(Group_ID,Product_ID) " +
-                        $"VALUES (@groupID, @productID)";
-                    command.Parameters.Clear();
-                    command.Parameters.AddWithValue("groupID", groupID);
-                    command.Parameters.AddWithValue("productID", productID);
-
-                    int res = command.ExecuteNonQuery();
-                    if (res > 0)
-                    {
-                        transaction.Commit();
-                        product.ID = productID;
-                    }
-                    else
-                    {
-                        throw new Exception("Failed to asign group to product");
-                    }
+                    throw new Exception();
                 }
-                else
-                {
-                    throw new Exception("Failed to create product");
-                }
+                command.CommandText =
+                       $"SELECT @@IDENTITY AS ID";
+                int productID = int.Parse(command.ExecuteScalar().ToString());
+                product.ID = productID;
             }
             catch (Exception ex)
             {
-                transaction.Rollback();
                 product = null;
             }
             finally

@@ -58,6 +58,11 @@ namespace UI.Presenters.Product
                 }
                 else if (e.Operation == ProductSelectedEventArgs.OperationType.Delete)
                 {
+                    if(!view.ConfirmDelete(product.Name,product.Price.ToString(), product.Discount.ToString()))
+                    {
+                        return;
+                    }
+
                     product = DataConnection.Instance.DeleteProduct(e.ID);
                     if(product == null)
                     {
@@ -79,7 +84,8 @@ namespace UI.Presenters.Product
 
         private void ViewLoadedHandler(object sender, EventArgs e)
         {
-            int groupId = GlobalValues.SelectedGroup == 0 ? 1 : GlobalValues.SelectedGroup;
+            view.Heading = "Proizvodi" + Environment.NewLine + $"Grupa: {GlobalValues.SelectedGroup.Name}";
+            int groupId = GlobalValues.SelectedGroup.ID;
             products = DataConnection.Instance.GetProductsInGroup(groupId);
             foreach(ProductModel product in products)
             {

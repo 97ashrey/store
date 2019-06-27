@@ -13,9 +13,12 @@ namespace UI.Views.Product
         event EventHandler BackTriggered;
         event EventHandler<ProductSelectedEventArgs> ProductSelected;
 
+        string Heading { get; set; }
 
         void AddProduct(int id, string name, string price, string discount);
         void DeleteProduct(int id);
         void UpdateProduct(int id, string name, string price, string discount);
+
+        bool ConfirmDelete(string name, string price, string discount);
     }
 }

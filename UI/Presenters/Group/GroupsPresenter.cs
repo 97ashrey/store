@@ -15,7 +15,7 @@ namespace UI.Presenters.Group
     public class GroupsPresenter
     {
         private IGroupsView view;
-
+        List<GroupModel> groups;
         public GroupsPresenter(IGroupsView view)
         {
             this.view = view;
@@ -31,7 +31,7 @@ namespace UI.Presenters.Group
         // Event handlers
         private void ViewLoadedHandler(object sender, EventArgs e)
         {
-            List<GroupModel> groups = DataConnection.Instance.GetGroups();
+            groups = DataConnection.Instance.GetGroups();
             foreach(GroupModel group in groups)
             {
                 view.AddGroup(group.ID, group.Name);
@@ -40,7 +40,12 @@ namespace UI.Presenters.Group
 
         private void GroupSelectedHandler(object sender, GroupSelectedEventArgs e)
         {
-            GlobalValues.SelectedGroup = e.GroupID;
+            GroupModel group = groups.Find(model => model.ID == e.GroupID);
+            if(group == null)
+            {
+                return;
+            }
+            GlobalValues.SelectedGroup = group;
             // Send Switch View Message
             EventAggregator.Instance.Publish(new ShowProductsViewMessage());
         }

@@ -40,7 +40,7 @@ namespace UI.Presenters.Product
             ProductModel product = new ProductModel();
             PopulateProduct(product);
 
-            product = DataConnection.Instance.CreateProduct(product, GlobalValues.SelectedGroup);
+            product = DataConnection.Instance.CreateProduct(product, GlobalValues.SelectedGroup.ID);
 
             if(product == null)
             {
